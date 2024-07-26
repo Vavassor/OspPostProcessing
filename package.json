@@ -1,0 +1,31 @@
+{
+  "author": {
+    "email": "dawso.andrew@gmail.com",
+    "name": "Andrew Dawson",
+    "url": "https://vavassor.github.io/"
+  },
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6"
+  },
+  "description": "Post processing settings for VRChat worlds.",
+  "displayName": "OSP Post Processing",
+  "keywords": [
+    "post processing"
+  ],
+  "license": "MIT",
+  "name": "com.orchidseal.postprocessing",
+  "samples": [
+    {
+      "displayName": "PostProcessingExample",
+      "description": "Post Processing examples.",
+      "path": "Samples~/PostProcessingExample"
+    }
+  ],
+  "unity": "2022.3",
+  "unityRelease": "6f1",
+  "url": "https://github.com/Vavassor/OspPostProcessing/releases/download/v0.1.0/com.orchidseal.postprocessing-0.1.0.zip",
+  "version": "0.1.0",
+  "vpmDependencies": {
+    "com.vrchat.worlds": ">=3.5.2 < 3.7.X"
+  }
+}

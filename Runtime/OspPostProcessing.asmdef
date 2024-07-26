@@ -1,0 +1,20 @@
+{
+    "name": "OspPostProcessing",
+    "rootNamespace": "",
+    "references": [
+        "UdonSharp.Lib",
+        "UdonSharp.Runtime",
+        "VRC.Udon",
+        "Unity.TextMeshPro",
+        "Unity.Postprocessing.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
