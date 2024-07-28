@@ -13,18 +13,8 @@ namespace OrchidSeal.PostProcessing
         public Toggle toggle;
         public int toggleId;
 
-        private bool priorIsOn;
-
         public void OnChangeToggleValue()
         {
-            // Don't play a sound if it's already toggled on.
-            if (toggle.isOn == priorIsOn)
-            {
-                return;
-            }
-
-            priorIsOn = toggle.isOn;
-
             if (toggleId == 0)
             {
                 modeGroup.OnChangeToggle0(this);
