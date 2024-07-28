@@ -4,6 +4,9 @@ using VRC.SDKBase;
 
 namespace OrchidSeal.PostProcessing
 {
+    /// <summary>
+    /// A menu section that is only enabled on desktop.
+    /// </summary>
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DesktopOnly : UdonSharpBehaviour
     {
@@ -11,6 +14,10 @@ namespace OrchidSeal.PostProcessing
         private CanvasGroup canvasGroup;
         [SerializeField]
         private Color enabledColor;
+        [SerializeField]
+        private Color iconEnabledColor;
+        [SerializeField]
+        private UnityEngine.UI.Image[] icons;
         [SerializeField]
         private UnityEngine.UI.Image[] images;
         [SerializeField]
@@ -25,6 +32,11 @@ namespace OrchidSeal.PostProcessing
             {
                 canvasGroup.interactable = true;
                 canvasGroup.blocksRaycasts = true;
+
+                foreach (var icon in icons)
+                {
+                    icon.color = iconEnabledColor;
+                }
 
                 foreach (var image in images)
                 {

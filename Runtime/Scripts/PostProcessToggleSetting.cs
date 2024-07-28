@@ -4,6 +4,9 @@ using UnityEngine.Rendering.PostProcessing;
 
 namespace OrchidSeal.PostProcessing
 {
+    /// <summary>
+    /// Boolean setting shared across mutliple toggles.
+    /// </summary>
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class PostProcessToggleSetting : UdonSharpBehaviour
     {

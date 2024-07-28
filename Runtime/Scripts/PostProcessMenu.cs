@@ -8,6 +8,7 @@ namespace OrchidSeal.PostProcessing
         public PostProcessSlider ambientOcclusionSlider;
         public PostProcessModeToggle ambientOcclusionModeToggle0;
         public PostProcessModeToggle ambientOcclusionModeToggle1;
+        public AudioPlayer audioPlayer;
         public PostProcessSlider bloomSlider;
         public PostProcessSlider chromaticAberrationSlider;
         public PostProcessModeToggle colorGradingModeToggle0;

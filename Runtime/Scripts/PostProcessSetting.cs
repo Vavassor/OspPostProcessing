@@ -4,11 +4,17 @@ using UnityEngine.Rendering.PostProcessing;
 
 namespace OrchidSeal.PostProcessing
 {
+    /// <summary>
+    /// Numeric setting shared across multiple sliders.
+    /// </summary>
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class PostProcessSetting : UdonSharpBehaviour
     {
         public float defaultValue;
         public PostProcessSlider[] sliders;
+        /// <summary>
+        /// Use two post process volumes for positive and negative direction.
+        /// </summary>
         public bool useTwoWayMode = true;
 
         [SerializeField]

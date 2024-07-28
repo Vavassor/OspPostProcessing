@@ -4,6 +4,9 @@ using VRC.SDKBase;
 
 namespace OrchidSeal.PostProcessing
 {
+    /// <summary>
+    /// Enable objects when playing on desktop.
+    /// </summary>
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class EnableOnDesktop : UdonSharpBehaviour
     {

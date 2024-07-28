@@ -4,8 +4,11 @@ using UnityEngine.Rendering.PostProcessing;
 
 namespace OrchidSeal.PostProcessing
 {
+    /// <summary>
+    /// Modal post processing setting shared between multiple toggle groups.
+    /// </summary>
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class PostProcessingModeGroup : UdonSharpBehaviour
+    public class PostProcessModeGroup : UdonSharpBehaviour
     {
         public bool defaultIsOn;
         public PostProcessModeToggle[] toggles;

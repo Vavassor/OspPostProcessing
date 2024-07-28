@@ -3,11 +3,14 @@ using UnityEngine;
 
 namespace OrchidSeal.PostProcessing
 {
+    /// <summary>
+    /// Shared settings for a group of post processing menus.
+    /// </summary>
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class PostProcessVolumeGroup : UdonSharpBehaviour
     {
-        [Header("Menus")]
         public PostProcessMenu[] menus;
+        public float uiSoundVolume = 0.25f;
 
         [Header("Defaults")]
         public float ambientOcclusion;
@@ -25,10 +28,10 @@ namespace OrchidSeal.PostProcessing
 
         [Header("Settings")]
         public PostProcessSetting ambientOcclusionSetting;
-        public PostProcessingModeGroup ambientOcclusionModeGroup;
+        public PostProcessModeGroup ambientOcclusionModeGroup;
         public PostProcessSetting bloomSetting;
         public PostProcessSetting chromaticAberrationSetting;
-        public PostProcessingModeGroup colorGradingModeGroup;
+        public PostProcessModeGroup colorGradingModeGroup;
         public PostProcessSetting contrastSetting;
         public PostProcessSetting exposureSetting;
         public PostProcessToggleSetting motionBlurSetting;
@@ -54,45 +57,21 @@ namespace OrchidSeal.PostProcessing
 
             for (var i = 0; i < menus.Length; i++)
             {
-                ambientOcclusionSetting.sliders[i] = menus[i].ambientOcclusionSlider;
-                menus[i].ambientOcclusionSlider.setting = ambientOcclusionSetting;
-
-                ambientOcclusionModeGroup.toggles[2 * i] = menus[i].ambientOcclusionModeToggle0;
-                menus[i].ambientOcclusionModeToggle0.modeGroup = ambientOcclusionModeGroup;
-                ambientOcclusionModeGroup.toggles[2 * i + 1] = menus[i].ambientOcclusionModeToggle1;
-                menus[i].ambientOcclusionModeToggle1.modeGroup = ambientOcclusionModeGroup;
-
-                bloomSetting.sliders[i] = menus[i].bloomSlider;
-                menus[i].bloomSlider.setting = bloomSetting;
-
-                chromaticAberrationSetting.sliders[i] = menus[i].chromaticAberrationSlider;
-                menus[i].chromaticAberrationSlider.setting = chromaticAberrationSetting;
-
-                colorGradingModeGroup.toggles[2 * i] = menus[i].colorGradingModeToggle0;
-                menus[i].colorGradingModeToggle0.modeGroup = colorGradingModeGroup;
-                colorGradingModeGroup.toggles[2 * i + 1] = menus[i].colorGradingModeToggle1;
-                menus[i].colorGradingModeToggle1.modeGroup = colorGradingModeGroup;
-
-                contrastSetting.sliders[i] = menus[i].contrastSlider;
-                menus[i].contrastSlider.setting = contrastSetting;
-
-                exposureSetting.sliders[i] = menus[i].exposureSlider;
-                menus[i].exposureSlider.setting = exposureSetting;
-
-                motionBlurSetting.toggles[i] = menus[i].motionBlurToggle;
-                menus[i].motionBlurToggle.setting = motionBlurSetting;
-
-                saturationSetting.sliders[i] = menus[i].saturationSlider;
-                menus[i].saturationSlider.setting = saturationSetting;
-
-                temperatureSetting.sliders[i] = menus[i].temperatureSlider;
-                menus[i].temperatureSlider.setting = temperatureSetting;
-
-                tintSetting.sliders[i] = menus[i].tintSlider;
-                menus[i].tintSlider.setting = tintSetting;
-
-                vignetteSetting.sliders[i] = menus[i].vignetteSlider;
-                menus[i].vignetteSlider.setting = vignetteSetting;
+                SetUpSlider(ambientOcclusionSetting, menus[i].ambientOcclusionSlider, i);
+                SetUpModeToggle(ambientOcclusionModeGroup, menus[i].ambientOcclusionModeToggle0, 2 * i);
+                SetUpModeToggle(ambientOcclusionModeGroup, menus[i].ambientOcclusionModeToggle1, 2 * i + 1);
+                SetUpSlider(bloomSetting, menus[i].bloomSlider, i);
+                SetUpSlider(chromaticAberrationSetting, menus[i].chromaticAberrationSlider, i);
+                SetUpModeToggle(colorGradingModeGroup, menus[i].colorGradingModeToggle0, 2 * i);
+                SetUpModeToggle(colorGradingModeGroup, menus[i].colorGradingModeToggle1, 2 * i + 1);
+                SetUpSlider(contrastSetting, menus[i].contrastSlider, i);
+                SetUpSlider(exposureSetting, menus[i].exposureSlider, i);
+                SetUpToggle(motionBlurSetting, menus[i].motionBlurToggle, i);
+                SetUpSlider(saturationSetting, menus[i].saturationSlider, i);
+                SetUpSlider(temperatureSetting, menus[i].temperatureSlider, i);
+                SetUpSlider(tintSetting, menus[i].tintSlider, i);
+                SetUpSlider(vignetteSetting, menus[i].vignetteSlider, i);
+                menus[i].audioPlayer.volumeGroup = this;
             }
 
             ambientOcclusionSetting.SetDefault(ambientOcclusion);
@@ -107,6 +86,24 @@ namespace OrchidSeal.PostProcessing
             temperatureSetting.SetDefault(temperature);
             tintSetting.SetDefault(tint);
             vignetteSetting.SetDefault(vignette);
+        }
+
+        private static void SetUpModeToggle(PostProcessModeGroup modeGroup, PostProcessModeToggle toggle, int toggleIndex)
+        {
+            modeGroup.toggles[toggleIndex] = toggle;
+            toggle.modeGroup = modeGroup;
+        }
+
+        private static void SetUpSlider(PostProcessSetting setting, PostProcessSlider slider, int sliderIndex)
+        {
+            setting.sliders[sliderIndex] = slider;
+            slider.setting = setting;
+        }
+
+        private static void SetUpToggle(PostProcessToggleSetting setting, PostProcessToggle toggle, int toggleIndex)
+        {
+            setting.toggles[toggleIndex] = toggle;
+            toggle.setting = setting;
         }
     }
 }

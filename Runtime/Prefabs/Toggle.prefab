@@ -198,8 +198,11 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 155347351667560303}
-  toggle: {fileID: 8682571946750217392}
+  audioPlayer: {fileID: 0}
+  disableSound: {fileID: 8300000, guid: d21b2cf843c4b6542ae5e5de06c67bb7, type: 3}
+  enableSound: {fileID: 8300000, guid: 9810e72262b29c94fa277f6705f5f786, type: 3}
   setting: {fileID: 0}
+  toggle: {fileID: 8682571946750217392}
 --- !u!114 &155347351667560303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,7 +290,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 0, y: 0, z: -32, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
